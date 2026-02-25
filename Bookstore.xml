@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE bookdetails SYSTEM "book.dtd">
+<?xml-stylesheet type="text/xsl" href="book.xsl"?>
+
+<bookdetails>
+    <book>
+        <title>Data Structures</title>
+        <author>S. Kumar</author>
+        <ISBN>101</ISBN>
+        <publisher>Pearson</publisher>
+        <price>450</price>
+        <edition>3</edition>
+    </book>
+
+    <book>
+        <title>Operating Systems</title>
+        <author>R. Sharma</author>
+        <ISBN>102</ISBN>
+        <publisher>McGraw Hill</publisher>
+        <price>550</price>
+        <edition>4</edition>
+    </book>
+
+    <book>
+        <title>Computer Networks</title>
+        <author>A. Verma</author>
+        <ISBN>103</ISBN>
+        <publisher>Oxford</publisher>
+        <price>600</price>
+        <edition>5</edition>
+    </book>
+
+    <book>
+        <title>Database Systems</title>
+        <author>P. Reddy</author>
+        <ISBN>104</ISBN>
+        <publisher>Springer</publisher>
+        <price>500</price>
+        <edition>2</edition>
+    </book>
+</bookdetails>
