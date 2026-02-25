@@ -1,40 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>XML Experiments Output</title>
+    <title>XML Projects</title>
 
-<style>
-body{
-    font-family: Arial, sans-serif;
-    background-color:#f4f7ff;
-    text-align:center;
-}
+    <script>
+        function loadXMLDoc(filename) {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", filename, false);
+            xhttp.send();
+            return xhttp.responseXML;
+        }
 
-h1{
-    background-color:#4CAF50;
-    color:white;
-    padding:15px;
-}
+        function displayResult(xmlFile, xslFile, elementId) {
+            var xml = loadXMLDoc(xmlFile);
+            var xsl = loadXMLDoc(xslFile);
 
-iframe{
-    width:90%;
-    height:400px;
-    border:2px solid black;
-    margin:20px;
-}
-</style>
+            if (window.ActiveXObject || "ActiveXObject" in window) {
+                var ex = xml.transformNode(xsl);
+                document.getElementById(elementId).innerHTML = ex;
+            } else if (document.implementation && document.implementation.createDocument) {
+                var xsltProcessor = new XSLTProcessor();
+                xsltProcessor.importStylesheet(xsl);
+                var resultDocument = xsltProcessor.transformToFragment(xml, document);
+                document.getElementById(elementId).appendChild(resultDocument);
+            }
+        }
+
+        window.onload = function () {
+            displayResult("Bookstore.xml", "Book.xsl", "books");
+            displayResult("Studentinfo.xml", "Student.xsl", "students");
+        }
+    </script>
 
 </head>
 
 <body>
 
-<h1>XML Tables Output</h1>
+    <h2>Book Details</h2>
+    <div id="books"></div>
 
-<h2>Student Information</h2>
-<iframe src="Studentinfo.xml"></iframe>
+    <hr>
 
-<h2>Book Store Details</h2>
-<iframe src="Bookstore.xml"></iframe>
+    <h2>Student Details</h2>
+    <div id="students"></div>
 
 </body>
 </html>
